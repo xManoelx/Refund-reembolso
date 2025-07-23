@@ -1,6 +1,9 @@
 // Seleciona os elementos do formulário
 const amount = document.getElementById('amount');
+const expense = document.getElementById('expense');
+const category = document.getElementById('category');
 
+const form = document.querySelector('form');
 
 // Adiciona um evento de input para validar o campo de valor
 amount.oninput = () => {
@@ -23,4 +26,19 @@ function formatCurrencyBRL(value) {
     });
 
     return value;
+}
+
+// Adiciona um evento de input para validar o campo de despesa
+form.onsubmit = (event) => {
+    event.preventDefault(); // Previne o envio do formulário
+
+    const NewExpense = {
+        id: new Date().getTime(), // Gera um ID único baseado no timestamp
+        expense: expense.value,
+        category_id: category.value,
+        category_name: category.options[category.selectedIndex].text,
+        amount: amount.value,
+        created_at: new Date(),
+
+    };
 }
