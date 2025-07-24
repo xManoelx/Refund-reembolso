@@ -145,3 +145,12 @@ function updateTotal() {
         alert("Erro ao atualizar o total:", error);
     }
 }
+
+// Evento que captura o clique no ícone de remover
+expenseList.addEventListener('click', (event) => {
+    if (event.target.classList.contains('remove-icon')) {
+        const expenseItem = event.target.closest('.expense');
+        expenseItem.remove();
+        updateTotal();
+    }
+});
